@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Formulaire Test</title>
+        <meta type="description" content="Test Formulaire">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Formulaire Test</h1>
+
+            <form id="main-form" action="#" method="GET">
+                <label for="Name">Nom</label>
+                <input type="text" id="Name" name="Name" required>
+                <label for="firstname">Prénom</label>
+                <input type="text" id="firstname" name="firstname" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+        <label for="phone">Numéro de téléphone</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="categorie">Choisissez une catégorie</label>
+        <select name="Catégorie" id="categorie" required>
+            <option value="">Veuillez choisir une catégorie</option>
+            <option value="generique">Générique</option>
+            <option value="alerte cyber">ALERTE CYBER</option>
+            <option value="anti-virus">Anti-Virus</option>
+            <option value="fichiers">Fichiers</option>
+            <option value="VPN">VPN</option>
+            <option value="Signatures">Signatures</option>
+            <option value="lm1">Logiciel métier 1</option>
+            <option value="lm2">Logiciel métier 2</option>
+        </select>
+
+        <div id="second-form">
+            <label for="subcategorie">Choix associés</label>
+            <select name="Subcategorie" id="subcategorie">
+                <option value="">Sélectionnez une option</option>
+            </select>
+            <p class="notice">Ce choix apparaît après votre sélection de catégorie.</p>
+        </div>
+
+        <label for="message">Commentaire</label>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea>
+
+        <button type="submit">Envoyer</button>
+            </form>
+        </div>
+        <script>
+            const categorySelect = document.getElementById('categorie');
+            const secondForm = document.getElementById('second-form');
+            const subcategorySelect = document.getElementById('subcategorie');
+
+            const optionsByCategory = {
+                generique: [
+                    {value: 'question', text: 'Question générale'},
+                    {value: 'demande', text: 'Demande d\'information'}
+                ],
+                'alerte cyber': [
+                    {value: 'phishing', text: 'Phishing / hameçonnage'},
+                    {value: 'ddos', text: 'Attaque DDoS'},
+                    {value: 'malware', text: 'Malware / virus'},
+                    {value: 'ransomware', text: 'Ransomware'}
+                ],
+                'anti-virus': [
+                    {value: 'installation', text: 'Installation anti-virus'},
+                    {value: 'mise-a-jour', text: 'Mise à jour des signatures'},
+                    {value: 'bloque', text: 'Scan bloqué ou fichier bloqué'}
+                ],
+                fichiers: [
+                    {value: 'perte', text: 'Fichier perdu'},
+                    {value: 'acces', text: 'Problème d\'accès'},
+                    {value: 'corruption', text: 'Fichier corrompu'}
+                ],
+                VPN: [
+                    {value: 'connexion', text: 'Impossible de se connecter'},
+                    {value: 'deconnexion', text: 'Déconnexion fréquente'},
+                    {value: 'configuration', text: 'Problème de configuration'}
+                ],
+                Signatures: [
+                    {value: 'mise-a-jour', text: 'Mise à jour des signatures'},
+                    {value: 'anomalie', text: 'Anomalie de signature'},
+                    {value: 'erreur', text: 'Erreur de signature'}
+                ],
+                lm1: [
+                    {value: 'bug', text: 'Bug logiciel métier 1'},
+                    {value: 'formation', text: 'Demande de formation'}
+                ],
+                lm2: [
+                    {value: 'bug', text: 'Bug logiciel métier 2'},
+                    {value: 'integration', text: 'Problème d\'intégration'}
+                ]
+            };
+
+            categorySelect.addEventListener('change', () => {
+                const selected = categorySelect.value;
+                const options = optionsByCategory[selected] || [];
+
+                subcategorySelect.innerHTML = '<option value="">Sélectionnez une option</option>';
+
+                if (options.length > 0) {
+                    options.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item.value;
+                        option.textContent = item.text;
+                        subcategorySelect.appendChild(option);
+                    });
+                    secondForm.classList.add('visible');
+                } else {
+                    secondForm.classList.remove('visible');
+                }
+            });
+
+            const form = document.getElementById('main-form');
+            const sendToEmail = 'destinataire@example.com'; // remplacez par votre adresse mail
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const name = document.getElementById('Name').value.trim();
+                const firstname = document.getElementById('firstname').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const category = categorySelect.value;
+                const subCategory = subcategorySelect.value;
+                const message = document.getElementById('message').value.trim();
+
+                const subject = encodeURIComponent('Nouveau formulaire : ' + category);
+                const body = encodeURIComponent(
+                    'Nom: ' + name + '\n' +
+                    'Prénom: ' + firstname + '\n' +
+                    'Email: ' + email + '\n' +
+                    'Téléphone: ' + phone + '\n' +
+                    'Catégorie: ' + category + '\n' +
+                    'Choix associé: ' + subCategory + '\n\n' +
+                    'Message:\n' + message
+                );
+
+                window.location.href = `mailto:${sendToEmail}?subject=${subject}&body=${body}`;
+            });
+        </script>
+    </body>
+</html>

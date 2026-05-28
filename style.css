@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fb;
+    color: #212529;
+    margin: 0;
+    padding: 24px;
+}
+
+.container {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #dfe3e8;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    color: #111827;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccd0da;
+    border-radius: 8px;
+    background: #fdfdfe;
+    font-size: 0.95rem;
+    color: #202B3F;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 94px;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+#second-form {
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+    display: none;
+}
+
+#second-form.visible {
+    display: block;
+}
+
+#second-form label {
+    margin-top: 0;
+}
+
+p.notice {
+    margin-top: 12px;
+    color: #475569;
+    font-size: 0.92rem;
+}
