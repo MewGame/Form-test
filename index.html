@@ -21,7 +21,7 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required title="Entrez une adresse email valide">
         <label for="phone">Numéro de téléphone</label>
-        <input type="tel" id="phone" name="phone" pattern="^(\+33|0)[1-9](?:[\s.-]?\d{2}){4}$" title="Ex: 06 12 34 56 78 ou +33 6 12 34 56 78"> 
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{9,15}" title="Entrez uniquement des chiffres (9 à 15 chiffres)">
 
         <label for="categorie">Choisissez une catégorie</label>
             <select name="Catégorie" id="categorie" required>
@@ -200,7 +200,7 @@
             const form = document.getElementById('main-form');
             const sendToEmail = 'assistance@network-systems.fr'; // adresse de destination prédéfinie
             const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
-            const phonePattern = /^(\+33|0)[1-9](?:[\s.-]?\d{2}){4}$/;
+            // Phone validation: accept digits only (spaces/punctuation ignored); check digit count 9-15
 
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
@@ -228,8 +228,10 @@
                 }
                 firstname.setCustomValidity('');
 
-                if (phone.value.trim() && !phonePattern.test(phone.value.trim())) {
-                    phone.setCustomValidity('Le numéro doit être un numéro français valide : 06 12 34 56 78 ou +33 6 12 34 56 78.');
+                // Normalize phone: keep only digits
+                const phoneDigits = phone.value.replace(/\D/g, '');
+                if (phone.value.trim() && (phoneDigits.length < 9 || phoneDigits.length > 15)) {
+                    phone.setCustomValidity('Le numéro doit contenir uniquement des chiffres (9 à 15 chiffres).');
                     phone.reportValidity();
                     return;
                 }
