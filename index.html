@@ -13,13 +13,15 @@
 
             <form id="main-form" action="#" method="GET">
                 <label for="Name">Nom</label>
-                <input type="text" id="Name" name="Name" required>
+                <input type="text" id="Name" name="Name" required pattern="[A-Za-zÀ-ÿ '-]{2,50}" title="Lettres, espaces, apostrophes et traits d'union seulement">
                 <label for="firstname">Prénom</label>
-                <input type="text" id="firstname" name="firstname" required>
+                <input type="text" id="firstname" name="firstname" required pattern="[A-Za-zÀ-ÿ '-]{2,50}" title="Lettres, espaces, apostrophes et traits d'union seulement">
+                <label for="company">Entreprise</label>
+                <input type="text" id="company" name="company" pattern="[A-Za-zÀ-ÿ0-9 '&-]{2,80}" title="Lettres, chiffres, espaces, apostrophes et traits d'union">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required title="Entrez une adresse email valide">
         <label for="phone">Numéro de téléphone</label>
-        <input type="tel" id="phone" name="phone">
+        <input type="tel" id="phone" name="phone" pattern="^(\+33|0)[1-9](?:[\s.-]?\d{2}){4}$" title="Ex: 06 12 34 56 78 ou +33 6 12 34 56 78"> 
 
         <label for="categorie">Choisissez une catégorie</label>
             <select name="Catégorie" id="categorie" required>
@@ -197,24 +199,54 @@
 
             const form = document.getElementById('main-form');
             const sendToEmail = 'assistance@network-systems.fr'; // adresse de destination prédéfinie
+            const namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
+            const phonePattern = /^(\+33|0)[1-9](?:[\s.-]?\d{2}){4}$/;
 
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
 
-                const name = document.getElementById('Name').value.trim();
-                const firstname = document.getElementById('firstname').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const phone = document.getElementById('phone').value.trim();
+                const name = document.getElementById('Name');
+                const firstname = document.getElementById('firstname');
+                const company = document.getElementById('company').value.trim();
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
                 const category = categorySelect.value;
                 const subCategory = subcategorySelect.value;
                 const message = document.getElementById('message').value.trim();
 
+                if (!namePattern.test(name.value.trim())) {
+                    name.setCustomValidity('Le nom doit contenir uniquement des lettres, espaces, apostrophes ou traits d\'union.');
+                    name.reportValidity();
+                    return;
+                }
+                name.setCustomValidity('');
+
+                if (!namePattern.test(firstname.value.trim())) {
+                    firstname.setCustomValidity('Le prénom doit contenir uniquement des lettres, espaces, apostrophes ou traits d\'union.');
+                    firstname.reportValidity();
+                    return;
+                }
+                firstname.setCustomValidity('');
+
+                if (phone.value.trim() && !phonePattern.test(phone.value.trim())) {
+                    phone.setCustomValidity('Le numéro doit être un numéro français valide : 06 12 34 56 78 ou +33 6 12 34 56 78.');
+                    phone.reportValidity();
+                    return;
+                }
+                phone.setCustomValidity('');
+
+                if (!email.checkValidity()) {
+                    email.reportValidity();
+                    return;
+                }
+
                 const subject = encodeURIComponent('Nouveau formulaire : ' + category + ' / ' + subCategory);
                 const body = encodeURIComponent(
-                    'Nom: ' + name + '\n' +
-                    'Prénom: ' + firstname + '\n' +
-                    'Email: ' + email + '\n' +
-                    'Téléphone: ' + phone + '\n' +
+                    'Nom: ' + name.value.trim() + '\n' +
+                    'Prénom: ' + firstname.value.trim() + '\n' +
+                    'Entreprise: ' + company + '\n' +
+                    'Email: ' + email.value.trim() + '\n' +
+                    'Téléphone: ' + phone.value.trim() + '\n' +
                     'Catégorie: ' + category + '\n' +
                     'Choix associé: ' + subCategory + '\n\n' +
                     'Message:\n' + message
