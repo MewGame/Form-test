@@ -56,43 +56,109 @@
             const optionsByCategory = {
                 generique: [
                     {value: 'question', text: 'Question générale'},
-                    {value: 'demande', text: 'Demande d\'information'}
+                    {value: 'demande', text: 'Demande d\'information'},
+                    {value: 'suggestion', text: 'Suggestion d\'amélioration'}
                 ],
                 'alerte cyber': [
                     {value: 'phishing', text: 'Phishing / hameçonnage'},
                     {value: 'ddos', text: 'Attaque DDoS'},
                     {value: 'malware', text: 'Malware / virus'},
-                    {value: 'ransomware', text: 'Ransomware'}
+                    {value: 'ransomware', text: 'Ransomware'},
+                    {value: 'intrusion', text: 'Intrusion ou accès non autorisé'}
                 ],
                 'anti-virus': [
                     {value: 'installation', text: 'Installation anti-virus'},
                     {value: 'mise-a-jour', text: 'Mise à jour des signatures'},
-                    {value: 'bloque', text: 'Scan bloqué ou fichier bloqué'}
+                    {value: 'bloque', text: 'Scan bloqué ou fichier bloqué'},
+                    {value: 'licence', text: 'Problème de licence'},
+                    {value: 'performance', text: 'Antivirus lent ou consommant trop'}
                 ],
                 fichiers: [
                     {value: 'perte', text: 'Fichier perdu'},
                     {value: 'acces', text: 'Problème d\'accès'},
-                    {value: 'corruption', text: 'Fichier corrompu'}
+                    {value: 'corruption', text: 'Fichier corrompu'},
+                    {value: 'sauvegarde', text: 'Demande de sauvegarde'},
+                    {value: 'partage', text: 'Problème de partage de fichier'}
                 ],
                 VPN: [
                     {value: 'connexion', text: 'Impossible de se connecter'},
                     {value: 'deconnexion', text: 'Déconnexion fréquente'},
-                    {value: 'configuration', text: 'Problème de configuration'}
+                    {value: 'configuration', text: 'Problème de configuration'},
+                    {value: 'lenteur', text: 'VPN trop lent'},
+                    {value: 'acces-distant', text: 'Accès distant indisponible'}
                 ],
                 Signatures: [
                     {value: 'mise-a-jour', text: 'Mise à jour des signatures'},
                     {value: 'anomalie', text: 'Anomalie de signature'},
-                    {value: 'erreur', text: 'Erreur de signature'}
+                    {value: 'erreur', text: 'Erreur de signature'},
+                    {value: 'synchronisation', text: 'Problème de synchronisation'}
                 ],
                 lm1: [
                     {value: 'bug', text: 'Bug logiciel métier 1'},
-                    {value: 'formation', text: 'Demande de formation'}
+                    {value: 'formation', text: 'Demande de formation'},
+                    {value: 'acces', text: 'Problème d\'accès au logiciel'}
                 ],
                 lm2: [
                     {value: 'bug', text: 'Bug logiciel métier 2'},
-                    {value: 'integration', text: 'Problème d\'intégration'}
+                    {value: 'integration', text: 'Problème d\'intégration'},
+                    {value: 'performance', text: 'Problème de performance'}
                 ]
             };
+
+            const messageTemplates = {
+                generique: {
+                    question: 'Bonjour,\n\nJe souhaite obtenir des informations générales sur votre service.\n\nMerci de votre retour.',
+                    demande: 'Bonjour,\n\nJe souhaite recevoir plus de détails ou une documentation adaptée à ma demande.\n\nCordialement.',
+                    suggestion: 'Bonjour,\n\nJ\'ai une suggestion d\'amélioration pour votre organisation ou votre outil.\n\nMerci de prendre en compte ce retour.'
+                },
+                'alerte cyber': {
+                    phishing: 'Bonjour,\n\nJ\'ai reçu un e-mail suspect de type phishing. Merci de vérifier et d\'indiquer les actions à mener.',
+                    ddos: 'Bonjour,\n\nNous pensons subir une attaque DDoS. Merci de sécuriser l\'infrastructure et de revenir vers nous rapidement.',
+                    malware: 'Bonjour,\n\nUn poste semble infecté par un malware. Merci de nous conseiller sur la mise en quarantaine et le nettoyage.',
+                    ransomware: 'Bonjour,\n\nJe suspecte une infection ransomware. Merci d\'activer les procédures de confinement et de récupération.',
+                    intrusion: 'Bonjour,\n\nUne intrusion ou un accès non autorisé a été détecté. Merci de faire une analyse de sécurité et de bloquer l\'incident.'
+                },
+                'anti-virus': {
+                    installation: 'Bonjour,\n\nJe rencontre une difficulté lors de l\'installation de l\'antivirus. Merci de m\'indiquer la procédure.',
+                    'mise-a-jour': 'Bonjour,\n\nJe souhaite vérifier la mise à jour des signatures antivirus et résoudre un éventuel échec.',
+                    bloque: 'Bonjour,\n\nLe scan antivirus est bloqué ou un fichier est incorrectement bloqué. Merci de corriger cela.',
+                    licence: 'Bonjour,\n\nJe rencontre un problème avec la licence de l\'antivirus. Merci de vérifier mon contrat.',
+                    performance: 'Bonjour,\n\nL\'antivirus ralentit trop le poste. Merci de contrôler la configuration et les ressources.'
+                },
+                fichiers: {
+                    perte: 'Bonjour,\n\nJ\'ai perdu un fichier important et j\'ai besoin d\'un support pour le retrouver.',
+                    acces: 'Bonjour,\n\nJe n\'ai plus accès à un fichier ou un dossier partagé. Merci de rétablir l\'accès.',
+                    corruption: 'Bonjour,\n\nUn fichier semble corrompu. Merci de proposer une procédure de réparation.',
+                    sauvegarde: 'Bonjour,\n\nJe souhaite planifier une sauvegarde ou restaurer des données depuis une sauvegarde.',
+                    partage: 'Bonjour,\n\nJe rencontre un problème lors du partage de fichiers entre utilisateurs. Merci de résoudre ce point.'
+                },
+                VPN: {
+                    connexion: 'Bonjour,\n\nJe ne parviens pas à me connecter au VPN. Merci de vérifier mes identifiants et la configuration.',
+                    deconnexion: 'Bonjour,\n\nJe suis déconnecté fréquemment du VPN. Merci de trouver l\'origine du problème.',
+                    configuration: 'Bonjour,\n\nLe VPN semble mal configuré. Merci de vérifier les paramètres et la compatibilité.',
+                    lenteur: 'Bonjour,\n\nLa connexion VPN est très lente. Merci de vérifier les performances.',
+                    'acces-distant': 'Bonjour,\n\nJe ne peux pas accéder à des ressources distantes via le VPN. Merci de rétablir l\'accès.'
+                },
+                Signatures: {
+                    'mise-a-jour': 'Bonjour,\n\nJe souhaite m\'assurer que les signatures sont bien à jour. Merci de vérifier.',
+                    anomalie: 'Bonjour,\n\nUne anomalie de signature a été détectée. Merci de la corriger.',
+                    erreur: 'Bonjour,\n\nUne erreur de signature est signalée sur un poste. Merci d\'intervenir.',
+                    synchronisation: 'Bonjour,\n\nLa synchronisation des signatures ne fonctionne plus. Merci de rétablir le service.'
+                },
+                lm1: {
+                    bug: 'Bonjour,\n\nJe rencontre un bug sur le logiciel métier 1. Merci de traiter ce dysfonctionnement.',
+                    formation: 'Bonjour,\n\nJe souhaite recevoir une formation sur le logiciel métier 1. Merci de proposer des créneaux.',
+                    acces: 'Bonjour,\n\nJe n\'ai plus accès au logiciel métier 1. Merci de vérifier mon profil et mes droits.'
+                },
+                lm2: {
+                    bug: 'Bonjour,\n\nJe rencontre un bug sur le logiciel métier 2. Merci de corriger cette anomalie.',
+                    integration: 'Bonjour,\n\nJe rencontre un problème d\'intégration entre le logiciel métier 2 et un autre service.',
+                    performance: 'Bonjour,\n\nLe logiciel métier 2 est très lent. Merci de vérifier la performance.'
+                }
+            };
+
+            let currentAutoTemplate = '';
+            const messageInput = document.getElementById('message');
 
             categorySelect.addEventListener('change', () => {
                 const selected = categorySelect.value;
@@ -111,10 +177,26 @@
                 } else {
                     secondForm.classList.remove('visible');
                 }
+
+                if (!messageInput.value || messageInput.value === currentAutoTemplate) {
+                    messageInput.value = '';
+                    currentAutoTemplate = '';
+                }
+            });
+
+            subcategorySelect.addEventListener('change', () => {
+                const category = categorySelect.value;
+                const subCategory = subcategorySelect.value;
+                const template = messageTemplates[category]?.[subCategory] || '';
+
+                if (template && (!messageInput.value || messageInput.value === currentAutoTemplate)) {
+                    messageInput.value = template;
+                    currentAutoTemplate = template;
+                }
             });
 
             const form = document.getElementById('main-form');
-            const sendToEmail = 'destinataire@example.com'; // remplacez par votre adresse mail
+            const sendToEmail = 'assistance@network-systems.fr'; // adresse de destination prédéfinie
 
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
@@ -127,7 +209,7 @@
                 const subCategory = subcategorySelect.value;
                 const message = document.getElementById('message').value.trim();
 
-                const subject = encodeURIComponent('Nouveau formulaire : ' + category);
+                const subject = encodeURIComponent('Nouveau formulaire : ' + category + ' / ' + subCategory);
                 const body = encodeURIComponent(
                     'Nom: ' + name + '\n' +
                     'Prénom: ' + firstname + '\n' +
