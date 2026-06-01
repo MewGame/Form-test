@@ -109,53 +109,53 @@
 
             const messageTemplates = {
                 generique: {
-                    question: 'Bonjour,\n\nJe souhaite obtenir des informations générales sur votre service.\n\nMerci de votre retour.',
-                    demande: 'Bonjour,\n\nJe souhaite recevoir plus de détails ou une documentation adaptée à ma demande.\n\nCordialement.',
-                    suggestion: 'Bonjour,\n\nJ\'ai une suggestion d\'amélioration pour votre organisation ou votre outil.\n\nMerci de prendre en compte ce retour.'
+                    question: 'Bonjour,\n\nJ\'aurais besoin de quelques informations complémentaires concernant votre service.\n\nMerci de votre aide.\n\nCordialement.',
+                    demande: 'Bonjour,\n\nPourriez-vous me transmettre plus de détails ou une documentation adaptée à ma demande ?\n\nMerci de votre aide.\n\nCordialement.',
+                    suggestion: 'Bonjour,\n\nJ\'aimerais vous soumettre une suggestion d\'amélioration pour votre organisation.\n\nMerci de considérer cette proposition.\n\nCordialement.'
                 },
                 'alerte cyber': {
-                    phishing: 'Bonjour,\n\nJ\'ai reçu un e-mail suspect de type phishing. Merci de vérifier et d\'indiquer les actions à mener.',
-                    ddos: 'Bonjour,\n\nNous pensons subir une attaque DDoS. Merci de sécuriser l\'infrastructure et de revenir vers nous rapidement.',
-                    malware: 'Bonjour,\n\nUn poste semble infecté par un malware. Merci de nous conseiller sur la mise en quarantaine et le nettoyage.',
-                    ransomware: 'Bonjour,\n\nJe suspecte une infection ransomware. Merci d\'activer les procédures de confinement et de récupération.',
-                    intrusion: 'Bonjour,\n\nUne intrusion ou un accès non autorisé a été détecté. Merci de faire une analyse de sécurité et de bloquer l\'incident.'
+                    phishing: 'Bonjour,\n\nJ\'ai reçu un e-mail suspect de type phishing. Pourriez-vous vérifier et me conseiller sur les actions à mener ?\n\nMerci de votre réactivité.\n\nCordialement.',
+                    ddos: 'Bonjour,\n\nNous suspectons une attaque de type DDoS. Pourriez-vous intervenir rapidement pour sécuriser notre infrastructure ?\n\nMerci de votre aide.\n\nCordialement.',
+                    malware: 'Bonjour,\n\nUn poste semble infecté par un malware. Pourriez-vous nous conseiller sur la mise en quarantaine et le nettoyage ?\n\nMerci d\'avance.\n\nCordialement.',
+                    ransomware: 'Bonjour,\n\nJe suspecte une infection ransomware. Pourriez-vous vérifier immédiatement et m\'aider à mettre en place les procédures d\'urgence ?\n\nMerci de votre réactivité.\n\nCordialement.',
+                    intrusion: 'Bonjour,\n\nUne intrusion ou un accès non autorisé a été détecté. Pourriez-vous effectuer une analyse de sécurité et bloquer l\'incident ?\n\nMerci d\'intervenir rapidement.\n\nCordialement.'
                 },
                 'anti-virus': {
-                    installation: 'Bonjour,\n\nJe rencontre une difficulté lors de l\'installation de l\'antivirus. Merci de m\'indiquer la procédure.',
-                    'mise-a-jour': 'Bonjour,\n\nJe souhaite vérifier la mise à jour des signatures antivirus et résoudre un éventuel échec.',
-                    bloque: 'Bonjour,\n\nLe scan antivirus est bloqué ou un fichier est incorrectement bloqué. Merci de corriger cela.',
-                    licence: 'Bonjour,\n\nJe rencontre un problème avec la licence de l\'antivirus. Merci de vérifier mon contrat.',
-                    performance: 'Bonjour,\n\nL\'antivirus ralentit trop le poste. Merci de contrôler la configuration et les ressources.'
+                    installation: 'Bonjour,\n\nJe rencontre une difficulté lors de l\'installation de l\'antivirus. Pourriez-vous me guider à travers cette procédure ?\n\nMerci de votre aide.\n\nCordialement.',
+                    'mise-a-jour': 'Bonjour,\n\nJe souhaite vérifier que les signatures antivirus sont correctement à jour. Pourriez-vous contrôler cela et résoudre tout problème potentiel ?\n\nMerci d\'avance.\n\nCordialement.',
+                    bloque: 'Bonjour,\n\nLe scan antivirus est bloqué ou un fichier est incorrectement détecté. Pourriez-vous m\'aider à résoudre cela ?\n\nMerci de votre aide.\n\nCordialement.',
+                    licence: 'Bonjour,\n\nJe rencontre un problème avec la licence de l\'antivirus. Pourriez-vous vérifier mon statut de licence et mon contrat ?\n\nMerci de votre aide.\n\nCordialement.',
+                    performance: 'Bonjour,\n\nL\'antivirus semble ralentir considérablement le poste. Pourriez-vous contrôler la configuration et l\'optimiser ?\n\nMerci d\'avance.\n\nCordialement.'
                 },
                 fichiers: {
-                    perte: 'Bonjour,\n\nJ\'ai perdu un fichier important et j\'ai besoin d\'un support pour le retrouver.',
-                    acces: 'Bonjour,\n\nJe n\'ai plus accès à un fichier ou un dossier partagé. Merci de rétablir l\'accès.',
-                    corruption: 'Bonjour,\n\nUn fichier semble corrompu. Merci de proposer une procédure de réparation.',
-                    sauvegarde: 'Bonjour,\n\nJe souhaite planifier une sauvegarde ou restaurer des données depuis une sauvegarde.',
-                    partage: 'Bonjour,\n\nJe rencontre un problème lors du partage de fichiers entre utilisateurs. Merci de résoudre ce point.'
+                    perte: 'Bonjour,\n\nJ\'ai perdu un fichier important. Pourriez-vous m\'aider à le localiser ou à le récupérer ?\n\nMerci de votre aide.\n\nCordialement.',
+                    acces: 'Bonjour,\n\nJe n\'ai plus accès à un fichier ou un dossier partagé. Pourriez-vous rétablir l\'accès pour moi ?\n\nMerci d\'avance.\n\nCordialement.',
+                    corruption: 'Bonjour,\n\nUn fichier semble corrompu et je ne peux plus y accéder. Pourriez-vous proposer une procédure de réparation ?\n\nMerci de votre aide.\n\nCordialement.',
+                    sauvegarde: 'Bonjour,\n\nJ\'aimerais mettre en place une sauvegarde ou restaurer des données existantes. Pourriez-vous m\'aider à organiser cela ?\n\nMerci d\'avance.\n\nCordialement.',
+                    partage: 'Bonjour,\n\nJe rencontre un problème lors du partage de fichiers entre utilisateurs. Pourriez-vous identifier et résoudre le dysfonctionnement ?\n\nMerci de votre aide.\n\nCordialement.'
                 },
                 VPN: {
-                    connexion: 'Bonjour,\n\nJe ne parviens pas à me connecter au VPN. Merci de vérifier mes identifiants et la configuration.',
-                    deconnexion: 'Bonjour,\n\nJe suis déconnecté fréquemment du VPN. Merci de trouver l\'origine du problème.',
-                    configuration: 'Bonjour,\n\nLe VPN semble mal configuré. Merci de vérifier les paramètres et la compatibilité.',
-                    lenteur: 'Bonjour,\n\nLa connexion VPN est très lente. Merci de vérifier les performances.',
-                    'acces-distant': 'Bonjour,\n\nJe ne peux pas accéder à des ressources distantes via le VPN. Merci de rétablir l\'accès.'
+                    connexion: 'Bonjour,\n\nJe n\'arrive pas à me connecter au VPN. Pourriez-vous vérifier ma configuration et m\'aider à résoudre ce problème ?\n\nMerci de votre aide.\n\nCordialement.',
+                    deconnexion: 'Bonjour,\n\nJe me déconnecte fréquemment du VPN. Pourriez-vous identifier la cause et m\'aider à stabiliser la connexion ?\n\nMerci d\'avance.\n\nCordialement.',
+                    configuration: 'Bonjour,\n\nLe VPN semble mal configuré de mon côté. Pourriez-vous vérifier les paramètres et la compatibilité ?\n\nMerci de votre aide.\n\nCordialement.',
+                    lenteur: 'Bonjour,\n\nMa connexion VPN est très lente. Pourriez-vous vérifier les performances et m\'aider à optimiser cela ?\n\nMerci d\'avance.\n\nCordialement.',
+                    'acces-distant': 'Bonjour,\n\nJe ne peux pas accéder aux ressources distantes via le VPN. Pourriez-vous vérifier et rétablir l\'accès ?\n\nMerci de votre aide.\n\nCordialement.'
                 },
                 Signatures: {
-                    'mise-a-jour': 'Bonjour,\n\nJe souhaite m\'assurer que les signatures sont bien à jour. Merci de vérifier.',
-                    anomalie: 'Bonjour,\n\nUne anomalie de signature a été détectée. Merci de la corriger.',
-                    erreur: 'Bonjour,\n\nUne erreur de signature est signalée sur un poste. Merci d\'intervenir.',
-                    synchronisation: 'Bonjour,\n\nLa synchronisation des signatures ne fonctionne plus. Merci de rétablir le service.'
+                    'mise-a-jour': 'Bonjour,\n\nPourrais-je vérifier que les signatures sont bien à jour ? Pourriez-vous contrôler cela et me confirmer l\'état ?\n\nMerci d\'avance.\n\nCordialement.',
+                    anomalie: 'Bonjour,\n\nUne anomalie de signature a été détectée. Pourriez-vous vérifier et corriger cela ?\n\nMerci de votre aide.\n\nCordialement.',
+                    erreur: 'Bonjour,\n\nUne erreur de signature a été signalée sur un poste. Pourriez-vous intervenir rapidement ?\n\nMerci d\'avance.\n\nCordialement.',
+                    synchronisation: 'Bonjour,\n\nLa synchronisation des signatures ne fonctionne plus. Pourriez-vous rétablir le service ?\n\nMerci de votre aide.\n\nCordialement.'
                 },
                 lm1: {
-                    bug: 'Bonjour,\n\nJe rencontre un bug sur le logiciel métier 1. Merci de traiter ce dysfonctionnement.',
-                    formation: 'Bonjour,\n\nJe souhaite recevoir une formation sur le logiciel métier 1. Merci de proposer des créneaux.',
-                    acces: 'Bonjour,\n\nJe n\'ai plus accès au logiciel métier 1. Merci de vérifier mon profil et mes droits.'
+                    bug: 'Bonjour,\n\nJe rencontre un bug sur le logiciel métier 1. Pourriez-vous traiter ce dysfonctionnement ?\n\nMerci d\'avance.\n\nCordialement.',
+                    formation: 'Bonjour,\n\nJ\'aimerais suivre une formation sur le logiciel métier 1. Pourriez-vous proposer des créneaux disponibles ?\n\nMerci d\'avance.\n\nCordialement.',
+                    acces: 'Bonjour,\n\nJe n\'ai plus accès au logiciel métier 1. Pourriez-vous vérifier mon profil et mes droits d\'accès ?\n\nMerci de votre aide.\n\nCordialement.'
                 },
                 lm2: {
-                    bug: 'Bonjour,\n\nJe rencontre un bug sur le logiciel métier 2. Merci de corriger cette anomalie.',
-                    integration: 'Bonjour,\n\nJe rencontre un problème d\'intégration entre le logiciel métier 2 et un autre service.',
-                    performance: 'Bonjour,\n\nLe logiciel métier 2 est très lent. Merci de vérifier la performance.'
+                    bug: 'Bonjour,\n\nJe rencontre un bug sur le logiciel métier 2. Pourriez-vous corriger cette anomalie ?\n\nMerci d\'avance.\n\nCordialement.',
+                    integration: 'Bonjour,\n\nJe rencontre un problème d\'intégration entre le logiciel métier 2 et un autre service. Pourriez-vous vérifier cela ?\n\nMerci de votre aide.\n\nCordialement.',
+                    performance: 'Bonjour,\n\nLe logiciel métier 2 est très lent en ce moment. Pourriez-vous vérifier les performances ?\n\nMerci d\'avance.\n\nCordialement.'
                 }
             };
 
